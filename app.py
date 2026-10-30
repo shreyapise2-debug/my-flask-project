@@ -12,14 +12,14 @@ app.secret_key = os.environ.get("SECRET_KEY")
 # MySQL Connection
 def get_db_connection():
     return mysql.connector.connect(
-        host="localhost",
-        user="root",
-       password=os.environ.get("MYSQLPASSWORD", ""),
-        database="auth_db",
-        port=3306
-        
+        host=os.environ.get("MYSQLHOST"),
+        user=os.environ.get("MYSQLUSER"),
+        password=os.environ.get("MYSQLPASSWORD"),
+        database=os.environ.get("MYSQLDATABASE"),
+        port=int(os.environ.get("MYSQLPORT", 3306)),
+        ssl_ca="/etc/secrets/ca.pem",
+        ssl_verify_cert=True
     )
-
 # Home Page
 @app.route("/")
 def home():
