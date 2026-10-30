@@ -1,0 +1,392 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+
+/* MAIN CONTAINER */
+
+.container {
+    position: relative;
+
+    width: 900px;
+    max-width: 95%;
+    min-height: 550px;
+
+    background: white;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+
+/* FORM CONTAINER */
+
+.form-container {
+    position: absolute;
+
+    top: 0;
+
+    width: 50%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: all 0.6s ease-in-out;
+}
+
+.form-container form {
+    width: 75%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-container h1 {
+    color: #333;
+
+    font-size: 32px;
+
+    margin-bottom: 10px;
+}
+
+.form-container p {
+    color: #777;
+
+    margin-bottom: 20px;
+}
+
+
+/* INPUT */
+
+input {
+    width: 100%;
+
+    padding: 14px 16px;
+
+    margin: 8px 0;
+
+    border: none;
+
+    background: #eeeeee;
+
+    border-radius: 8px;
+
+    outline: none;
+
+    font-size: 15px;
+
+    transition: all 0.3s ease;
+}
+
+input:focus {
+    background: white;
+
+    transform: scale(1.03);
+
+    box-shadow: 0 0 0 2px #667eea;
+}
+
+
+/* BUTTON */
+
+button {
+    padding: 13px 40px;
+
+    margin-top: 20px;
+
+    border: none;
+
+    border-radius: 25px;
+
+    background: linear-gradient(135deg, #667eea, #764ba2);
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: translateY(-3px);
+
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+
+/* LOGIN */
+
+.login-container {
+    left: 0;
+    opacity:1;
+    z-index: 2;
+}
+
+
+/* REGISTER */
+
+.register-container {
+    left: 50%;
+
+    opacity: 0;
+
+    z-index: 1;
+}
+
+
+/* OVERLAY */
+
+.overlay-container {
+    position: absolute;
+
+    top: 0;
+    left: 50%;
+
+    width: 50%;
+    height: 100%;
+
+    overflow: hidden;
+
+    z-index: 100;
+
+    transition: transform 0.6s ease-in-out;
+}
+
+.overlay {
+    position: relative;
+
+    left: -100%;
+
+    width: 200%;
+    height: 100%;
+
+    background: linear-gradient(135deg, #667eea, #764ba2);
+
+    transition: transform 0.6s ease-in-out;
+}
+
+
+/* OVERLAY PANELS */
+
+.overlay-panel {
+    position: absolute;
+
+    top: 0;
+
+    width: 50%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    color: white;
+
+    padding: 40px;
+
+    transition: transform 0.6s ease-in-out;
+}
+
+.overlay-panel h1 {
+    font-size: 35px;
+
+    margin-bottom: 20px;
+}
+
+.overlay-panel p {
+    color: white;
+
+    line-height: 1.5;
+
+    margin-bottom: 10px;
+}
+
+
+/* LEFT PANEL */
+
+.overlay-left {
+    left: 0;
+
+    transform: translateX(-20%);
+}
+
+
+/* RIGHT PANEL */
+
+.overlay-right {
+    right: 0;
+}
+
+
+/* GHOST BUTTON */
+
+button.ghost {
+    background: transparent;
+
+    border: 2px solid white;
+
+    box-shadow: none;
+}
+
+button.ghost:hover {
+    background: white;
+
+    color: #764ba2;
+}
+
+
+/* REGISTER ANIMATION */
+
+.container.right-panel-active
+.register-container {
+    
+
+    opacity: 1;
+
+    z-index: 5;
+}
+
+.container.right-panel-active
+.login-container {
+    /* transform: translateX(100%); */
+    opacity:0;
+    z-index:1;
+}
+
+.container.right-panel-active
+.overlay-container {
+    transform: translateX(-100%);
+}
+
+.container.right-panel-active
+.overlay {
+    transform: translateX(50%);
+}
+
+.container.right-panel-active
+.overlay-left {
+    transform: translateX(0);
+}
+
+.container.right-panel-active
+.overlay-right {
+    transform: translateX(20%);
+}
+
+
+/* FORGOT PASSWORD */
+
+a {
+    color: #667eea;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    margin-top: 10px;
+}
+
+
+/* FLASH MESSAGE */
+
+.message {
+    position: fixed;
+
+    top: 20px;
+    right: 20px;
+
+    padding: 15px 25px;
+
+    background: white;
+
+    color: #333;
+
+    border-radius: 10px;
+
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+
+    animation: slideDown 0.5s ease;
+}
+
+
+/* KEYFRAME */
+
+@keyframes slideDown {
+
+    from {
+        transform: translateY(-50px);
+
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+
+        opacity: 1;
+    }
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    .container {
+        width: 95%;
+
+        min-height: 500px;
+    }
+
+    .overlay-container {
+        display: none;
+    }
+
+    .form-container {
+        width: 100%;
+    }
+
+    .register-container {
+        opacity: 0;
+    }
+
+    .container.right-panel-active
+    .login-container {
+        opacity: 0;
+    }
+
+    .container.right-panel-active
+    .register-container {
+        opacity: 1;
+    }
+}
